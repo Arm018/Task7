@@ -9,7 +9,7 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        $data['authors'] = Author::all();
+        $data['authors'] = Author::with('books')->paginate(5);
         return view('admin.authors.index', $data);
     }
     public function create()

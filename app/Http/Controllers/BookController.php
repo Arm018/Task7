@@ -11,7 +11,7 @@ class BookController extends Controller
 
     public function index()
     {
-        $data['books'] = Book::with('authors')->paginate(10);
+        $data['books'] = Book::with('authors')->paginate(5);
         return view('admin.books.index',$data);
     }
 
