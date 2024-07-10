@@ -1,47 +1,34 @@
 <?php
 
-use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AuthorController;
+use App\Http\Controllers\admin\BookController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
-Route::post('login', [AdminController::class, 'login'])->name('admin.login');
+
+Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 
 Route::prefix('admin')->middleware('admin')->group(function () {
-    Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::resource('books', BookController::class);
+    Route::resource('authors', AuthorController::class);
 
-    Route::prefix('books')->group(function () {
-        Route::get('index', [BookController::class, 'index'])->name('books.index');
-        Route::get('create', [BookController::class, 'create'])->name('books.create');
-        Route::post('/', [BookController::class, 'store'])->name('books.store');
-        Route::get('edit/{id}', [BookController::class, 'edit'])->name('books.edit');
-        Route::put('edit/{id}', [BookController::class, 'update'])->name('books.update');
-        Route::delete('delete/{id}', [BookController::class, 'destroy'])->name('books.destroy');
-    });
-
-    Route::prefix('authors')->group(function () {
-        Route::get('index',[AuthorController::class, 'index'])->name('authors.index');
-        Route::get('create',[AuthorController::class, 'create'])->name('authors.create');
-        Route::post('/',[AuthorController::class, 'store'])->name('authors.store');
-        Route::get('edit/{id}',[AuthorController::class, 'edit'])->name('authors.edit');
-        Route::put('edit/{id}',[AuthorController::class, 'update'])->name('authors.update');
-        Route::delete('delete/{id}',[AuthorController::class, 'destroy'])->name('authors.destroy');
-
-
-    });
 });
 
-Route::get('books', [BookController::class, 'userIndex'])->name('user.books.index');
-Route::get('books/{id}', [BookController::class, 'userShow'])->name('user.books.show');
+Route::get('books', [\App\Http\Controllers\BookController::class, 'index'])->name('user.books.index');
+Route::get('books/{id}', [\App\Http\Controllers\BookController::class, 'show'])->name('user.books.show');
 
-Route::get('authors', [AuthorController::class, 'userIndex'])->name('user.authors.index');
-Route::get('authors/{id}', [AuthorController::class, 'userShow'])->name('user.authors.show');
+Route::get('authors', [\App\Http\Controllers\AuthorController::class, 'index'])->name('user.authors.index');
+Route::get('authors/{id}', [\App\Http\Controllers\AuthorController::class, 'show'])->name('user.authors.show');
+
+
 
 

@@ -32,12 +32,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    @if(session()->has('admin'))
-                    <form action="{{ route('admin.logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-link nav-link">Logout</button>
-                    </form>
-                    @endif
+                    @auth('web')
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                        </form>
+                    @endauth
                 </li>
             </ul>
         </div>

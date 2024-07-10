@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 
@@ -20,13 +21,10 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        if ($request->email == 'admin@gmail.com' && $request->password == 'admin')
-        {
+        if ($request->email == 'admin@gmail.com' && $request->password == 'admin') {
             $request->session()->put('admin', $request->email);
             return redirect()->route('admin.dashboard');
-        }
-        else
-        {
+        } else {
             return back()->withErrors(['Invalid Email or Password']);
         }
     }
@@ -39,7 +37,7 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $data['admins'] = Admin::all();
-        return view('admin.dashboard',$data);
+        $admins = Admin::all();
+        return view('admin.dashboard', compact('admins'));
     }
 }

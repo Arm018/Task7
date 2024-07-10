@@ -38,9 +38,9 @@
                                             <td>{{ $author->first_name }}</td>
                                             <td>
 
-                                                <a href="{{route('books.edit',['id' => $book->id])}}"
+                                                <a href="{{route('books.edit',[$book])}}"
                                                    class="btn btn-warning btn-sm">Edit</a>
-                                                <form action="{{route('books.destroy',['id' => $book->id])}}"
+                                                <form action="{{route('books.destroy',[$book])}}"
                                                       method="POST" style="display:inline-block;" class="mt-1">
                                                     @csrf
                                                     @method('DELETE')
