@@ -13,5 +13,9 @@
         "sass": "^1.56.1",
         "vite": "^4.0.0",
         "vue": "^3.4.35"
+    },
+    "dependencies": {
+        "vue-loader": "^17.4.2",
+        "vue-router": "^4.4.2"
     }
 }

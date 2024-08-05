@@ -18,15 +18,6 @@ class ApiAuthorController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $author = Author::query()->create([$request->all()]);
-        return response()->json($author);
-    }
-
-    /**
      * Display the specified resource.
      */
     public function show(string $id)
@@ -35,24 +26,4 @@ class ApiAuthorController extends Controller
         return response()->json($author);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $author = Author::query()->findOrFail($id);
-        $author->update($request->all());
-        return response()->json(['message' => 'Author updated successfully', 'author' => $author]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $author = Author::query()->findOrFail($id);
-        $author->delete();
-        return response()->json(['message' => 'Author deleted successfully']);
-
-    }
 }

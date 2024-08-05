@@ -1,6 +1,26 @@
-import { createApp } from "vue";
-import "./bootstrap"; // Import any other setup or global styles
-import {App} from "vue";
+import {createApp} from 'vue';
+import BooksList from './components/BooksList.vue';
+import BookShow from './components/BookShow.vue';
+import AuthorsList from './components/AuthorsList.vue';
+import AuthorShow from './components/AuthorShow.vue';
+import {createRouter, createWebHistory} from 'vue-router';
 
-const app = createApp(App); // Create the app instance with the root component
-app.mount("#app"); // Mount the app to the DOM element with id 'app'
+const routes = [
+    {path: '/authors', component: AuthorsList},
+    {path: '/authors/:id', component: AuthorShow, props: true},
+    {path: '/books', component: BooksList},
+    {path: '/books/:id', component: BookShow, props: true}
+];
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes
+});
+
+const app = createApp({});
+app.use(router);
+app.component('authors-list', AuthorsList);
+app.component('author-show', AuthorShow);
+app.component('books-list',BooksList);
+app.component('book-show',BookShow);
+app.mount('#app');

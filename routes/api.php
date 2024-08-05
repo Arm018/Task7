@@ -17,19 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::apiResource('books', ApiBookController::class)->names([
-    'index' => 'api.books.index',
-    'store' => 'api.books.store',
-    'show' => 'api.books.show',
-    'update' => 'api.books.update',
-    'destroy' => 'api.books.destroy',
-]);
+Route::get('/books', [ApiBookController::class, 'index'])->name('api.books.index');
+Route::get('/books/{id}', [ApiBookController::class, 'show'])->name('api.books.show');
 
-Route::apiResource('authors', ApiAuthorController::class)->names([
-    'index' => 'api.authors.index',
-    'store' => 'api.authors.store',
-    'show' => 'api.authors.show',
-    'update' => 'api.authors.update',
-    'destroy' => 'api.authors.destroy',
-]);
+Route::get('authors', [ApiAuthorController::class, 'index'])->name('api.authors.index');
+Route::get('authors/{author}', [ApiAuthorController::class, 'show'])->name('api.authors.show');
 

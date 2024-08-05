@@ -7,6 +7,8 @@
     <title>BookStore</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite('resources/js/app.js')
+
     <style>
         html, body {
             height: 100%;
@@ -40,6 +42,7 @@
 
 <div class="container mt-5 content">
     @yield('content')
+    <script src="{{ mix('js/app.js') }}"></script>
 </div>
 <footer class="bg-light text-center text-lg-start mt-5">
     <div class="container p-4">
