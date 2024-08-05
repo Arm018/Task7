@@ -3,6 +3,7 @@ import BooksList from './components/BooksList.vue';
 import BookShow from './components/BookShow.vue';
 import AuthorsList from './components/AuthorsList.vue';
 import AuthorShow from './components/AuthorShow.vue';
+import Pagination from 'vue-pagination-2';
 import {createRouter, createWebHistory} from 'vue-router';
 
 const routes = [
@@ -19,8 +20,6 @@ const router = createRouter({
 
 const app = createApp({});
 app.use(router);
-app.component('authors-list', AuthorsList);
-app.component('author-show', AuthorShow);
-app.component('books-list',BooksList);
-app.component('book-show',BookShow);
+app.component('pagination', Pagination);
+
 app.mount('#app');

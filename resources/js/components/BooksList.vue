@@ -14,11 +14,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="d-flex justify-content-center mt-4">
-            <button @click="prevPage" :disabled="!books.prev_page_url" class="btn btn-primary btn-sm">Previous</button>
-            <button @click="nextPage" :disabled="!books.next_page_url" class="btn btn-primary btn-sm ml-2">Next</button>
-        </div>
     </div>
 </template>
 
@@ -29,9 +24,7 @@ export default {
     data() {
         return {
             books: {
-                data: [],
-                prev_page_url: null,
-                next_page_url: null
+                data: []
             }
         };
     },
@@ -45,18 +38,6 @@ export default {
                 this.books = response.data;
             } catch (error) {
                 console.error('There was an error fetching the books:', error);
-            }
-        },
-        prevPage() {
-            if (this.books.prev_page_url) {
-                const page = new URL(this.books.prev_page_url).searchParams.get('page');
-                this.fetchBooks(page);
-            }
-        },
-        nextPage() {
-            if (this.books.next_page_url) {
-                const page = new URL(this.books.next_page_url).searchParams.get('page');
-                this.fetchBooks(page);
             }
         }
     }
