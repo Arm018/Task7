@@ -1,16 +1,25 @@
-import {createApp} from 'vue';
+import { createApp } from 'vue';
 import BooksList from './components/BooksList.vue';
 import BookShow from './components/BookShow.vue';
 import AuthorsList from './components/AuthorsList.vue';
 import AuthorShow from './components/AuthorShow.vue';
-import Pagination from 'vue-pagination-2';
-import {createRouter, createWebHistory} from 'vue-router';
+import LoginComponent from './components/Login.vue';
 
+import { createRouter, createWebHistory } from 'vue-router';
+import axios from 'axios';
+
+// Set Axios default headers if token exists
+const token = localStorage.getItem('authToken');
+if (token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
+// Create Vue Router
 const routes = [
-    {path: '/authors', component: AuthorsList},
-    {path: '/authors/:id', component: AuthorShow, props: true},
-    {path: '/books', component: BooksList},
-    {path: '/books/:id', component: BookShow, props: true}
+    { path: '/authors', component: AuthorsList },
+    { path: '/authors/:id', component: AuthorShow, props: true },
+    { path: '/books', component: BooksList },
+    { path: '/books/:id', component: BookShow, props: true }
 ];
 
 const router = createRouter({
@@ -18,8 +27,12 @@ const router = createRouter({
     routes
 });
 
+// Create Vue App
 const app = createApp({});
-app.use(router);
-app.component('pagination', Pagination);
 
+app.component('login-component', LoginComponent);
+
+app.use(router);
+
+// Mount the Vue App
 app.mount('#app');

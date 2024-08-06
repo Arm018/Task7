@@ -32,7 +32,7 @@ class AdminController extends Controller
         return response()->json([
             'token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => 7200
+            'expires_in' => 60
         ]);
     }
 

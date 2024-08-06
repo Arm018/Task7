@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite('resources/sass/app.scss')
+
     <style>
         html,
         body {
@@ -45,6 +46,8 @@
 
     <div class="container mt-5 content">
         @yield('content')
+        @vite('resources/js/app.js')
+
     </div>
 
     <footer class="footer py-3 bg-light">

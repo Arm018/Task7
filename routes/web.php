@@ -13,6 +13,12 @@ Route::get('/', function () {
 
 
 
+Route::get('admin/login', function () {
+    return view('admin.vue-api-login');
+})->name('admin.vue-api-login');
+Route::post('admin/login', [App\Http\Controllers\Api\AdminController::class, 'login']);
+
+
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 

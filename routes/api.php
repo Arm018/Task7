@@ -22,12 +22,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('admin/login', [AdminController::class, 'login']);
 
-Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
-    Route::get('dashboard', [AdminController::class, 'dashboard']);
-    Route::post('logout', [AdminController::class, 'logout']);
 
+
+
+Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('books', function () {
         return BookResource::collection(Book::paginate(5));
