@@ -8,13 +8,11 @@ import LoginComponent from './components/Login.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import axios from 'axios';
 
-// Set Axios default headers if token exists
 const token = localStorage.getItem('authToken');
 if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
 
-// Create Vue Router
 const routes = [
     { path: '/authors', component: AuthorsList },
     { path: '/authors/:id', component: AuthorShow, props: true },
@@ -34,5 +32,4 @@ app.component('login-component', LoginComponent);
 
 app.use(router);
 
-// Mount the Vue App
 app.mount('#app');

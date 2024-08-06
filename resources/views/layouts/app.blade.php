@@ -47,7 +47,6 @@
     <div class="container mt-5 content">
         @yield('content')
         @vite('resources/js/app.js')
-
     </div>
 
     <footer class="footer py-3 bg-light">
