@@ -11,9 +11,14 @@ declare module 'vue' {
     AuthorsList: typeof import('./resources/js/components/AuthorsList.vue')['default']
     BookShow: typeof import('./resources/js/components/BookShow.vue')['default']
     BooksList: typeof import('./resources/js/components/BooksList.vue')['default']
-    ExampleComponent: typeof import('./resources/js/components/ExampleComponent.vue')['default']
+    CardStatisticsHorizontal: typeof import('./resources/js/admin/@core/components/cards/CardStatisticsHorizontal.vue')['default']
+    CardStatisticsVertical: typeof import('./resources/js/admin/@core/components/cards/CardStatisticsVertical.vue')['default']
+    CardStatisticsWithImages: typeof import('./resources/js/admin/@core/components/cards/CardStatisticsWithImages.vue')['default']
     Login: typeof import('./resources/js/components/Login.vue')['default']
+    MoreBtn: typeof import('./resources/js/admin/@core/components/MoreBtn.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ThemeSwitcher: typeof import('./resources/js/admin/@core/components/ThemeSwitcher.vue')['default']
+    VueApexCharts: typeof import('vue3-apexcharts')['default']
   }
 }

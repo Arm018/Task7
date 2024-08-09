@@ -25,11 +25,7 @@ const router = createRouter({
     routes
 });
 
-// Create Vue App
 const app = createApp({});
-
 app.component('login-component', LoginComponent);
-
 app.use(router);
-
 app.mount('#app');

@@ -23,17 +23,17 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
-                'resources/js/main.js',
+                'resources/js/admin/main.js',
             ],
             refresh: true,
         }),
         vuetify({
             styles: {
-                configFile: 'resources/styles/variables/_vuetify.scss',
+                configFile: 'resources/js/admin/assets/styles/variables/_vuetify.scss',
             },
         }),
         Components({
-            dirs: ['resources/js/@core/components', 'resources/js/components'],
+            dirs: ['resources/js/admin/@core/components', 'resources/js/components'],
             dts: true,
             resolvers: [
                 (componentName) => {
@@ -57,13 +57,13 @@ export default defineConfig({
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
-            '@core-scss': fileURLToPath(new URL('./resources/styles/@core', import.meta.url)),
-            '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
-            '@core': fileURLToPath(new URL('./resources/js/@core', import.meta.url)),
-            '@layouts': fileURLToPath(new URL('./resources/js/@layouts', import.meta.url)),
-            '@images': fileURLToPath(new URL('./resources/images/', import.meta.url)),
-            '@styles': fileURLToPath(new URL('./resources/styles/', import.meta.url)),
-            '@configured-variables': fileURLToPath(new URL('./resources/styles/variables/_template.scss', import.meta.url)),
+            '@core-scss': fileURLToPath(new URL('./resources/js/admin/assets/styles/@core', import.meta.url)),
+            '@': fileURLToPath(new URL('./resources/js/admin', import.meta.url)),
+            '@core': fileURLToPath(new URL('./resources/js/admin/@core', import.meta.url)),
+            '@layouts': fileURLToPath(new URL('./resources/js/admin/@layouts', import.meta.url)),
+            '@images': fileURLToPath(new URL('./resources/js/admin/assets/images/', import.meta.url)),
+            '@styles': fileURLToPath(new URL('./resources/js/admin/assets/styles/', import.meta.url)),
+            '@configured-variables': fileURLToPath(new URL('./resources/js/admin/assets/styles/variables/_template.scss', import.meta.url)),
         },
     },
     define: { 'process.env': {} },

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     @vite('resources/sass/app.scss')
+    @vite('resources/js/app.js')
 
     <style>
         html, body {
@@ -41,8 +43,9 @@
 </nav>
 
 <div class="container mt-5 content">
+    <div id="app">
     @yield('content')
-    @vite('resources/js/app.js')
+    </div>
 </div>
 <footer class="bg-light text-center text-lg-start mt-5">
     <div class="container p-4">

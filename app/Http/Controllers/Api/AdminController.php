@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+    public function getAdmin()
+    {
+        $admin = Auth::user();
+        return response()->json([
+            'name' => $admin->name,
+        ]);
+    }
+
     public function login(Request $request)
     {
         $fields = $request->validate([

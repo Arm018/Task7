@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Http\Controllers\Admin\AuthorController;
+use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Resources\AuthorResource;
@@ -26,24 +28,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::get('books', function () {
-        return BookResource::collection(Book::paginate(5));
-    });
+    Route::resource('books', BookController::class);
+    Route::resource('authors', AuthorController::class);
 
-    Route::get('books/{id}', function ($id) {
-        return new BookResource(Book::findOrFail($id));
-    });
+    Route::get('admin', [AdminController::class, 'getAdmin']);
 
-    Route::get('authors', function () {
-        return AuthorResource::collection(Author::paginate(5));
-    });
-
-    Route::get('authors/{id}', function ($id) {
-        $author = Author::with('books')->findOrFail($id);
-        return new AuthorResource($author);
-    });
 });
 
 
